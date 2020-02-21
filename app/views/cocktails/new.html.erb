@@ -1,4 +1,16 @@
-<%= simple_form_for (@cocktail) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
+<!-- # <%= simple_form_for (@cocktail) do |f| %>
+#   <%= f.input :name %>
+#   <%= f.submit %>
+# <% end %> -->
+
+<%= simple_form_for (@cocktail) do |c_form| %>
+  <%= c_form.input :name %>
+  <% c_form.fields_for :ingredients do |i_form| %>
+    <%= i_form.input :name %>
+      <%= i_form.fields_for :doses do |d_form| %>
+        <%= d_form.input :description %>
+      <% end %>
+  <% end %>
+  <%= c_form.submit %>
 <% end %>
+

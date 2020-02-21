@@ -4,6 +4,8 @@ class Ingredient < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   before_destroy :check_for_doses
 
+  accepts_nested_attributes_for :doses
+
   private
 
   def check_for_doses
